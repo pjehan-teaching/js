@@ -1,0 +1,191 @@
+<section id="loops">
+
+    <section>
+        <h2>Les boucles</h2>
+    </section>
+
+    <section>
+        <h3>Introduction</h3>
+        <p>Les boucles permettent de répéter une série d'instructions en fonction d’une condition.</p>
+        <p>Tant que la condition est respectée, on exécute la série d'instructions.</p>
+        <pre><code class="language-js">const countries = ['France', 'Germany', 'Belgium'];
+
+for (i = 0; i < countries.length; i++) {
+    console.log(countries[i]);
+}</code></pre>
+    </section>
+
+    <section>
+        <h3>La boucle while</h3>
+        <p>La boucle while permet d'effectuer une itération tant que la condition est vraie</p>
+        <pre id="while-loop" class="line-numbers"><code class="language-js">let compteur = 3;
+
+while(compteur > 0) {
+  console.log(compteur);
+  compteur--;
+}
+
+console.log('Bonne année !!');</code></pre>
+    </section>
+
+    <section>
+        <h3>La boucle for</h3>
+        <p>La boucle for est similaire à la boucle while mais elle permet d'instancier, d'initialiser et de redéfinir la valeur d’une variable plus facilement :</p>
+        <pre><code class="language-js">for(var pourcentage = 0; pourcentage < 100; pourcentage++) {
+    console.log('Chargement en cours. ' + pourcentage + '% effectué...');
+}</code></pre>
+        <footer>
+            <a href="#" class="info" style="font-size: 0.9em;">La boucle for permet de ne pas oublier l’incrémentation de la variable</a>
+        </footer>
+    </section>
+
+    <section>
+        <h3>La boucle forEach</h3>
+        <p>En JavaScript, il existe également une méthode <code class="language-js">forEach()</code> que l'on peut utiliser sur les tableaux.</p>
+        <p>Cette méthode prend en paramètre une fonction qui sera appelée pour chaque élément du tableau :</p>
+        <pre><code class="language-js">const countries = ['France', 'Germany', 'Belgium'];
+
+countries.forEach(function(country) {
+    console.log(country);
+});</code></pre>
+    </section>
+
+    <section>
+        <h3>La boucle for of</h3>
+        <p>Cette boucle également de boucler sur les éléments d'un tableau :</p>
+        <pre><code class="language-js">const countries = ['France', 'Germany', 'Belgium'];
+
+for (country of countries) {
+    console.log(country);
+}</code></pre>
+    </section>
+
+    <section>
+        <h3>La boucle for in</h3>
+        <p>Cette boucle ne permet pas de boucler sur un tableau mais sur <strong>les propriétés d'un objet</strong> :</p>
+        <pre><code class="language-js">const person = { firstName: 'John', lastName: 'Doe', salary: 2500 };
+
+for (let property in person) {
+    console.log(property); // firstName ... lastName ... salary
+}</code></pre>
+    </section>
+
+    <section>
+        <h3>Exercice</h3>
+        <p>Créer un tableau listant les projets réalisés par une entreprise et ajouter un système de tri, recherche, calculs...</p>
+        <div class="instructions">
+            <ol>
+                <li>Générer dynamiquement le tableau des utilisateurs en bouclant sur un tableau d'objets JavaScript</li>
+                <li>Ajouter une liste déroulante pour trier les éléments du tableau</li>
+                <li>Ajouter un champ de recherche pour filtrer la liste par le titre du projet</li>
+                <li>Ajouter une ligne "total" à la fin du tableau pour afficher le total des colonnes numériques</li>
+            </ol>
+        </div>
+    </section>
+
+    <section>
+        <h3>Exercice</h3>
+        <div class="container">
+            <div class="col">
+                <pre style="max-height: 600px; max-width: 500px; overflow: auto;"><code class="language-html">&lt;form&gt;
+    &lt;p&gt;
+        &lt;label for=&quot;select-sort&quot;&gt;Trier par&lt;/label&gt;
+        &lt;select name=&quot;select-sort&quot; id=&quot;select-sort&quot;&gt;
+            &lt;option value=&quot;title&quot;&gt;Titre&lt;/option&gt;
+            &lt;option value=&quot;customer&quot;&gt;Client&lt;/option&gt;
+            &lt;option value=&quot;amount&quot;&gt;Montant&lt;/option&gt;
+        &lt;/select&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        &lt;label for=&quot;input-filter&quot;&gt;Rechercher&lt;/label&gt;
+        &lt;input type=&quot;text&quot; name=&quot;input-filter&quot; id=&quot;input-filter&quot; placeholder=&quot;Rechercher&quot;&gt;
+    &lt;/p&gt;
+&lt;/form&gt;
+&lt;table&gt;
+    &lt;thead&gt;
+    &lt;tr&gt;
+        &lt;th&gt;Titre&lt;/th&gt;
+        &lt;th&gt;Client&lt;/th&gt;
+        &lt;th&gt;Montant&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Cr&eacute;ation du site vitrine&lt;/td&gt;
+        &lt;td&gt;ACME&lt;/td&gt;
+        &lt;td&gt;1200&euro;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Am&eacute;lioration du Drive&lt;/td&gt;
+        &lt;td&gt;Carrefour&lt;/td&gt;
+        &lt;td&gt;8500&euro;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Cr&eacute;ation du logo&lt;/td&gt;
+        &lt;td&gt;ACME&lt;/td&gt;
+        &lt;td&gt;600&euro;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;/tbody&gt;
+    &lt;tfoot style=&quot;background-color: #ccc;&quot;&gt;
+        &lt;tr&gt;
+            &lt;td&gt;&lt;/td&gt;
+            &lt;td&gt;&lt;/td&gt;
+            &lt;td&gt;11400&euro;&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tfoot&gt;
+&lt;/table&gt;</code></pre>
+            </div>
+            <div class="col" style="font-size: 0.6em;">
+                <form>
+                    <p>
+                        <label for="select-sort">Trier par</label>
+                        <select name="select-sort" id="select-sort">
+                            <option value="title">Titre</option>
+                            <option value="customer">Client</option>
+                            <option value="amount">Montant</option>
+                        </select>
+                    </p>
+                    <p>
+                        <label for="input-filter">Rechercher</label>
+                        <input type="text" name="input-filter" id="input-filter" placeholder="Rechercher">
+                    </p>
+                </form>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Titre</th>
+                        <th>Client</th>
+                        <th>Montant</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Création du site vitrine</td>
+                        <td>ACME</td>
+                        <td>1200€</td>
+                    </tr>
+                    <tr>
+                        <td>Amélioration du Drive</td>
+                        <td>Carrefour</td>
+                        <td>8500€</td>
+                    </tr>
+                    <tr>
+                        <td>Création du logo</td>
+                        <td>ACME</td>
+                        <td>600€</td>
+                    </tr>
+                    </tbody>
+                    <tfoot style="background-color: #ccc;">
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>11400€</td>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </section>
+
+</section>
+

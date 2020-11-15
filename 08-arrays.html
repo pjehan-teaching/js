@@ -1,0 +1,218 @@
+<section id="arrays">
+
+    <section>
+        <h2>Les tableaux</h2>
+    </section>
+
+    <section>
+        <h3>Introduction</h3>
+        <p>Un tableau (array) est un type de donnée. On peut donc utiliser une variable pour manipuler des tableaux.</p>
+        <table>
+            <thead>
+            <tr>
+                <th>Index</th>
+                <th>Valeur</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>0</td>
+                <td>Pierre</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Eric</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Antoine</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Julie</td>
+            </tr>
+            </tbody>
+        </table>
+        <footer>
+            <a href="#" class="info">En Javascript, les tableaux commencent à l'index 0</a>
+        </footer>
+    </section>
+
+    <section>
+        <h3>Déclarer des tableaux</h3>
+        <p>Les extraits de code ci-dessous permettent de créer un tableau en insérant des valeurs dans chaque cases.</p>
+        <pre><code class="language-js">// Utiliser les crochets
+let classes = ['DC1', 'DC2', 'DC3', 'DC PRO'];</code></pre>
+        <pre><code class="language-js">// Utiliser l'objet Array
+let classes = new Array('DC1', 'DC2', 'DC3', 'DC PRO');</code></pre>
+    </section>
+
+    <section>
+        <h3>Insérer dans un tableau</h3>
+        <pre><code class="language-js">// Avec ou sans index
+let classes = [];
+classes[0] = 'DC 1';
+classes[1] = 'DC 2';
+classes[] = 'DC 3'; // Sans index, l'élément est ajouté à la fin du tableau
+classes[] = 'DC PRO';</code></pre>
+        <pre><code class="language-js">// La méthode push
+let classes = [];
+classes.push('DC 1');
+classes.push('DC 2');
+classes.push('DC 3');
+classes.push('DC PRO');</code></pre>
+    </section>
+
+    <section>
+        <h3>Les objets</h3>
+        <p>Les objets JavaScript <strong>ne sont pas des objets</strong> comme on peut en trouver dans le autres langages utilisant une approche OO (Orientée Objet).</p>
+        <p>Il s'agit plus d'une structure de données similaires aux <strong>tableaux associatifs</strong> du langage PHP.</p>
+        <p>Cependant, les objets JavaScript <strong>peuvent contenir des fonctions</strong> :</p>
+        <pre><code class="language-js">const person = {
+    firstName: 'John',
+    lastName: 'Doe',
+    fullName: function() {
+        return this.firstName + " " + this.lastName;
+    }
+}</code></pre>
+        <p>Comme en POO, la variable <code class="language-js">this</code> fait référence à l'objet en cours.</p>
+    </section>
+
+    <section>
+        <h3>Méthodes avancées</h3>
+        <p>Le langage JavaScript dispose de nombreuses méthodes permettant de manipuler rapidement les tableaux.</p>
+        <p>Voici quelques méthodes couramment utilisées :</p>
+        <ul>
+            <li><code class="language-js">find()</code> : Rechercher un élément d'un tableau</li>
+            <li><code class="language-js">includes()</code> : Vérifier si un élément est dans un tableau</li>
+            <li><code class="language-js">filter()</code> : Filtrer les éléments d'un tableau</li>
+            <li><code class="language-js">sort()</code> : Trier les éléments d'un tableau</li>
+            <li><code class="language-js">map()</code> : Transformer les éléments d'un tableau</li>
+            <li><code class="language-js">reduce()</code> : Effectuer une agrégation sur les éléments d'un tableau</li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>La méthode find</h3>
+        <p>La méthode <code class="language-js">find()</code> permet de rechercher un élément dans un tableau.</p>
+        <pre><code class="language-js">const users = [
+    { firstName: 'John', lastName: 'Doe' },
+    { firstName: 'Joe', lastName: 'Hendry' },
+    { firstName: 'Jack', lastName: 'Allen' }
+];
+
+const john = users.find(function (user) {
+    return user.firstName === 'John';
+});
+
+console.log(john); // { firstName: 'John', lastName: 'Doe' }</code></pre>
+        <footer>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Find" class="info" target="_blank">Documentation</a>
+        </footer>
+    </section>
+
+    <section>
+        <h3>La méthode includes</h3>
+        <p>La méthode <code class="language-js">includes()</code> permet de vérifier si un élément est dans un tableau.</p>
+        <pre><code class="language-js">const users = [
+    { firstName: 'John', lastName: 'Doe' },
+    { firstName: 'Joe', lastName: 'Hendry' },
+    { firstName: 'Jack', lastName: 'Allen' }
+];
+
+const jane = users.includes({ firstName: 'Jane', lastName: 'Doe' });
+
+console.log(jane); // false</code></pre>
+        <footer>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Includes" class="info" target="_blank">Documentation</a>
+        </footer>
+    </section>
+
+    <section>
+        <h3>La méthode filter</h3>
+        <p>La méthode <code class="language-js">filter()</code> permet de filtrer les éléments d'un tableau.</p>
+        <pre><code class="language-js">const users = [
+    { firstName: 'John', lastName: 'Doe' },
+    { firstName: 'Joe', lastName: 'Hendry' },
+    { firstName: 'John', lastName: 'Allen' }
+];
+
+const johns = users.filter(function(user, index) {
+    return user.firstName === 'John';
+});
+
+console.log(johns); // [{ firstName: 'John', lastName: 'Doe' }, { firstName: 'John', lastName: 'Allen' }]</code></pre>
+        <footer>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Filter" class="info" target="_blank">Documentation</a>
+        </footer>
+    </section>
+
+    <section>
+        <h3>La méthode sort</h3>
+        <p>La méthode <code class="language-js">sort()</code> permet de trier les éléments d'un tableau.</p>
+        <pre><code class="language-js">const users = [
+    { firstName: 'John', lastName: 'Doe' },
+    { firstName: 'Joe', lastName: 'Hendry' },
+    { firstName: 'Jack', lastName: 'Allen' }
+];
+
+const sortedUsers = users.sort(function(user1, user2) {
+    if (user1.firstName > user2.firstName) {
+        return 1;
+    } else if (user1.firstName < user2.firstName) {
+        return -1;
+    } else {
+        return 0;
+    }
+});
+
+console.log(sortedUsers); // [{ firstName: 'Jack', lastName: 'Allen' }, { firstName: 'Joe', lastName: 'Allen' }, { firstName: 'John', lastName: 'Doe' }]</code></pre>
+        <footer>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Sort" class="info" target="_blank">Documentation</a>
+        </footer>
+    </section>
+
+    <section>
+        <h3>La méthode map</h3>
+        <p>La méthode <code class="language-js">map()</code> permet de transformer les éléments d'un tableau.</p>
+        <p>Elle ne change pas le nombre d'éléments contenus dans le tableau mais seulement leur forme.</p>
+        <pre><code class="language-js">const users = [
+    { firstName: 'John', lastName: 'Doe' },
+    { firstName: 'Joe', lastName: 'Hendry' },
+    { firstName: 'Jack', lastName: 'Allen' }
+];
+
+const firstNames = users.map(function (user, index) {
+    return user.firstName;
+});
+
+console.log(firstNames); // Array(3) [ "John", "Joe", "Jack" ]</code></pre>
+        <footer>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map" class="info" target="_blank">Documentation</a>
+            <a href="#" class="info" target="_blank" style="font-size: 0.8em;">Cette méthode est très souvent utilisée dans le framework ReactJS</a>
+        </footer>
+    </section>
+
+    <section>
+        <h3>La méthode reduce</h3>
+        <p>La méthode <code class="language-js">reduce()</code> permet de réaliser une agrégation sur les éléments d'un tableau.</p>
+        <p>Elle ne retourne qu'une seule valeur.</p>
+        <pre><code class="language-js">const users = [
+    { firstName: 'John', lastName: 'Doe', salary: 2500 },
+    { firstName: 'Joe', lastName: 'Hendry', salary: 1600 },
+    { firstName: 'Jack', lastName: 'Allen', salary: 1650 }
+];
+
+const totalSalary = users.reduce(function (total, user) {
+    return total + user.salary;
+}, 0);
+
+console.log(totalSalary); // 5750</code></pre>
+        <p>Le second paramètre de la méthode <code class="language-js">reduce()</code> permet de définir la valeur de départ de l'accumulateur (ici la variable <code class="language-js">total</code>).</p>
+        <footer>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce" class="info" target="_blank">Documentation</a>
+        </footer>
+    </section>
+
+</section>
+

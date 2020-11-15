@@ -1,0 +1,136 @@
+<section id="conditions">
+
+    <section>
+        <h2>Les conditions</h2>
+    </section>
+
+    <section>
+        <h3>Introduction</h3>
+        <p>Les conditions permettent d'exécuter une ou plusieurs instructions en fonction du résultat d’une comparaison.</p>
+        <p>Exemple : <strong>Si</strong> le nombre de produits en stock est inférieur à 10, <strong>alors</strong> il faut se réapprovisionner. <strong>Sinon</strong>, si le nombre de produits est supérieur à la place disponible en stock, <strong>alors</strong> il faut les mettre en avant dans le magasin.</p>
+    </section>
+
+    <section>
+        <h3>Introduction</h3>
+        <p>On pourrait représenter l'algorithme précédent avec le code Javascript suivant :</p>
+        <pre><code class="language-js">let nombreDeProduits = 8;
+let tailleMaxStock = 30;
+
+if(nombreDeProduits < 10) {
+  nombreDeProduits = nombreDeProduits + 10;
+} else if (nombreDeProduits < tailleMaxStock && nombreDeProduits > (tailleMaxStock - 5)) {
+  alert('Attention, nous allons bientôt avoir trop de produits en stock.');
+} else if (nombreDeProduits > tailleMaxStock ) {
+  alert('Il faut mettre ce produit en avant !');
+}</code></pre>
+    </section>
+
+    <section>
+        <h3>Les symboles de comparaison</h3>
+        <table>
+            <thead>
+            <tr>
+                <th>Symbole</th>
+                <th>Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>==</td>
+                <td>Est égal à</td>
+            </tr>
+            <tr>
+                <td>&gt;</td>
+                <td>Est supérieur à</td>
+            </tr>
+            <tr>
+                <td>&gt;=</td>
+                <td>Est supérieur ou égal à</td>
+            </tr>
+            <tr>
+                <td>&lt;</td>
+                <td>Est inférieur à</td>
+            </tr>
+            <tr>
+                <td>&lt;=</td>
+                <td>Est inférieur ou égal à</td>
+            </tr>
+            <tr>
+                <td>!=</td>
+                <td>Est différent de</td>
+            </tr>
+            </tbody>
+        </table>
+        <footer>
+            <a href="#" class="info" style="font-size: 0.8em;">Les symboles === et !== permettent également de comparer le type de donnée</a>
+        </footer>
+    </section>
+
+    <section>
+        <h3>Combinaison de conditions</h3>
+        <pre><code class="language-js">let nombreDeProduits = 2;
+let tailleMaxStock = 30;
+let jourSemaine = 'Dimanche';
+if(nombreDeProduits < 10 && jourSemaine != 'Dimanche') {
+  nombreDeProduits = nombreDeProduits + 10;
+} else if (nombreDeProduits > tailleMaxStock) {
+  alert('Mettre ce produit en avant !');
+} else {
+  alert('Rien à signaler.');
+}</code></pre>
+    </section>
+
+    <section>
+        <h3>Symboles de combinaison</h3>
+        <table>
+            <thead>
+            <tr>
+                <th>Symbole</th>
+                <th>Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>&&</td>
+                <td>ET</td>
+            </tr>
+            <tr>
+                <td>||</td>
+                <td>OU</td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <h3>Les booléens</h3>
+        <p>Avec les variables de type booléen, on peut utiliser une syntaxe simplifiée :</p>
+        <pre><code class="language-js">let isAdmin = true;
+
+if (isAdmin == true) { }
+if (isAdmin == false) { }
+
+// Syntaxe simplifiée
+if (isAdmin) { }
+if (!isAdmin) { } // Ici, le point d'exclamation permet d'inverser la condition</code></pre>
+    </section>
+
+    <section>
+        <h3>Ternaire</h3>
+        <p>Il existe également une autre façon d'écrire des conditions appelée condition ternaire :</p>
+        <pre><code class="language-js">message = (score > 10) ? "Vous avez gagné" : "Vous avez perdu";</code></pre>
+    </section>
+
+    <section>
+        <h3>Exercice</h3>
+        <div class="instructions">
+            <ol>
+                <li>Générez deux valeurs aléatoires et les afficher avec l'instruction <code class="language-js">prompt()</code></li>
+                <li>Récupérez la valeur saisie dans une variable</li>
+                <li>Indiquer à l'internaute si la réponse est bonne ou non</li>
+            </ol>
+        </div>
+    </section>
+
+</section>
+

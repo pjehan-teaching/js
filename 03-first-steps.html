@@ -1,0 +1,73 @@
+<section id="first-steps">
+
+    <section>
+        <h2>Premiers pas</h2>
+    </section>
+
+    <section>
+        <h3>Inclure du JS dans une page HTML</h3>
+        <p>Directement dans le code HTML :</p>
+        <pre><code class="language-html">&lt;script&gt;alert('Hello world!');&lt;/script&gt;</code></pre>
+        <hr>
+        <p>Dans un fichier .js :</p>
+        <div class="container">
+            <div class="col">
+                <p>index.html</p>
+                <pre><code class="language-html">&lt;script type="text/javascript" src="script.js"&gt;&lt;/script&gt;</code></pre>
+            </div>
+            <div class="col">
+                <p>script.js</p>
+                <pre><code class="language-js">alert('Hello world!');</code></pre>
+            </div>
+        </div>
+        <footer>
+            <a href="#" class="warning" style="font-size: 0.6em">Il est préférable de positionner la balise &lt;script&gt; avant la fermeture de la balise &lt;body&gt;</a>
+        </footer>
+    </section>
+
+    <section>
+        <h3>Les fonctions alert / prompt / confirm</h3>
+        <ul>
+            <li><code class="language-js">alert()</code> afficher un message à l’internaute</li>
+            <li><code class="language-js">prompt()</code> demander à l’internaute d’effectuer une saisie</li>
+            <li><code class="language-js">confirm()</code> demander à l’internaute de confirmer une action</li>
+        </ul>
+        <pre><code class="language-js">alert("Hello world!");
+prompt("Saisissez votre pseudo", "pjehan");
+confirm("Etes-vous sûr ?");</code></pre>
+        <footer>
+            <a href="#" class="info" style="font-size: 0.8em;">En JS, une ligne peut se terminer par un ";" ou bien en retour à la ligne</a>
+        </footer>
+    </section>
+
+    <section>
+        <h3>L'objet console</h3>
+        <p>L'objet console permet d’afficher des informations de debug dans la console :</p>
+        <pre><code class="language-js">console.log('log');
+console.debug('debug');
+console.info('info');
+console.warn('warn');
+console.error('error');</code></pre>
+    </section>
+
+    <section>
+        <h3>Point d’arrêt</h3>
+        <p>Même si l'objet console permet de debugger son code facilement, il est préférable d’utiliser les points d’arrêt pour debugger son code:</p>
+        <img src="assets/images/breakpoints-on-line.png" alt="Breakpoint">
+    </section>
+
+    <section>
+        <h3>Commentaires</h3>
+        <p>Attention ! Les commentaires en Javascript ne s'écrivent pas comme dans la langage HTML :</p>
+        <pre><code class="language-html">&lt;!-- Commentaire HTML --&gt;
+&lt;script&gt;
+  // Commentaire sur une ligne en Javascript
+  /*
+    Commentaire sur plusieurs lignes
+    en Javascript
+  */
+&lt;/script&gt;</code></pre>
+    </section>
+
+</section>
+

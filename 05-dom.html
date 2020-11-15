@@ -1,0 +1,81 @@
+<section id="dom">
+
+    <section>
+        <h2>Manipuler le DOM</h2>
+    </section>
+
+    <section>
+        <h3>Qu'est-ce que le DOM ?</h3>
+        <div class="container">
+            <div class="col" style="flex: 2;">
+                <p>Le DOM (Document Object Model) est une interface de programmation pour les documents HTML ou XML. Il représente la <strong>structure d'un document</strong> et définit la façon dont cette structure est accessible par un programme qui pourra ensuite en modifier la structure, le style ou le contenu.</p>
+                <p>Le DOM est une représentation d'un document sous forme de <strong>nodes</strong> et d'<strong>objets</strong> ayant des propriétés et des méthodes.</p>
+            </div>
+            <div class="col">
+                <img src="assets/images/dom.png" alt="DOM">
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h3>Créer un élément dans le DOM</h3>
+        <p>L'objet document permet construire de nouveau éléments et de les ajouter sur la page HTML :</p>
+        <ul>
+            <li><code class="language-js">createElement()</code> : Créer un nouvel élément HTML</li>
+            <li><code class="language-js">createTextNode()</code> : Créer une nouvelle zone de texte</li>
+            <li><code class="language-js">appendChild()</code> : Ajouter un élément enfant</li>
+            <li><code class="language-js">removeChild()</code> : Supprimer un élément enfant</li>
+        </ul>
+        <pre><code class="language-js">let title = document.createElement('h1');
+title.innerText = 'Hello world!';
+document.querySelector('body').appendChild(title);</code></pre>
+    </section>
+
+    <section>
+        <h3>Exercice</h3>
+        <div class="instructions">
+            <ol>
+                <li>Créer une liste à puces en HTML</li>
+                <li>Créer deux boutons pour ajouter / supprimer des éléments dans la liste à puces</li>
+                <li>Écrire le code JS pour gérer les évènements de clique sur les boutons</li>
+            </ol>
+        </div>
+    </section>
+
+    <section>
+        <h3>Modifier les attributs</h3>
+        <p>L'objet element permet de modifier les attributs :</p>
+        <ul>
+            <li><code class="language-js">setAttribute()</code> : Définir la valeur d’un attribut</li>
+            <li><code class="language-js">getAttribute()</code> : Récupérer la valeur d’un attribut</li>
+        </ul>
+        <pre><code class="language-js">document.querySelector('input').setAttribute('value', 'test');</code></pre>
+    </section>
+
+    <section>
+        <h3>Modifier le style</h3>
+        <p>Pour modifier le style d'un élément, il est préférable d'utiliser la propriété <code class="language-js">style</code> :</p>
+        <pre><code class="language-js">document.querySelector('input').style.borderColor = 'red';</code></pre>
+        <p>Vous pouvez également ajouter des classes CSS en utilisant la méthode <code class="language-js">classList.add()</code> :</p>
+        <pre><code class="language-js">document.querySelector('input').classList.add('is-invalid');</code></pre>
+    </section>
+
+    <section>
+        <h3>Exercices</h3>
+        <div class="instructions">
+            <ol>
+                <li>Créer 3 boutons en HTML</li>
+                <li>Modifier le texte du bouton lorsque celui-ci est cliqué</li>
+                <li>Écrire un code optimisé (il doit fonctionner, peut importe le nombre de boutons)</li>
+            </ol>
+        </div>
+        <div class="instructions">
+            <ol>
+                <li>Créer 3 boutons en HTML ainsi que 3 paragraphes</li>
+                <li>Écouter les évènements de clique sur les boutons pour faire apparaitre / disparaître les paragraphes (à la manière d'un système d'onglets)</li>
+            </ol>
+        </div>
+    </section>
+
+</section>
+

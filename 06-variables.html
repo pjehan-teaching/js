@@ -1,0 +1,214 @@
+<section id="variables">
+
+    <section>
+        <h2>Les variables</h2>
+    </section>
+
+    <section>
+        <h3>Présentation des variables</h3>
+        <p>Les variables sont comme des conteneurs qui permettent de <strong>stocker des informations en mémoire</strong>.</p>
+        <p>En JavaScript, les variables ne sont <strong>pas typées</strong> mais elles ont tout de même un type implicite.</p>
+        <p>Il est possible d'utiliser les mots clés <code class="language-js">var</code> ou <code class="language-js">let</code> pour déclarer des variables :</p>
+        <pre><code class="language-js">var firstName = 'John';
+let lastName = 'Doe';</code></pre>
+        <footer>
+            <a href="#" class="info">Le mot clé <code class="language-js">let</code> à été introduit avec l'ES6</a>
+        </footer>
+    </section>
+
+    <section>
+        <h3>var VS let</h3>
+        <p>La différence entre les mots clés <code class="language-js">var</code> et <code class="language-js">let</code> se trouve dans leur portée (ou scope en anglais).</p>
+        <ul>
+            <li><code class="language-js">var</code> : Portée globale (Global Scope)</li>
+            <li><code class="language-js">let</code> : Portée locale (Block Scope)</li>
+        </ul>
+        <pre><code class="language-js">{
+    var firstName = 'John';
+    let lastName = 'Doe';
+}
+
+console.log(firstName); // John
+console.log(lastName); // Uncaught ReferenceError: lastName is not defined</code></pre>
+        <footer>
+            <a href="#" class="info">Il est préférable d'utiliser <code class="language-js">let</code></a>
+            <a href="#" class="info" style="font-size: 0.8em;">Une variable déclarée dans une fonction n'est pas accessible en dehors de celle-ci</a>
+        </footer>
+    </section>
+
+    <section>
+        <h3>Les constantes</h3>
+        <p>Avec ES6 est également apparu le mot clé <code class="language-js">const</code> permettant de déclarer une constante.</p>
+        <p>Contrairement aux variables, les constantes ne peuvent pas changer de valeur :</p>
+        <pre><code class="language-js">const pi = 3.14;
+pi = 3; // Uncaught TypeError: invalid assignment to const 'pi'</code></pre>
+    </section>
+
+    <section>
+        <h3>Nommage des variables</h3>
+        <ul>
+            <li>Le nom des variables doit être composé uniquement de caractères alphanumériques (A-z, 0-9, & et _ )</li>
+            <li>Le nom des variables ne doit pas contenir d’accents (utiliser un nommage en anglais ?)</li>
+            <li>Le nom des variables ne doit pas commencer par un chiffre</li>
+            <li>Le nom des variables est sensible à la casse (case-sensitive).</li>
+            <li>Ainsi <code class="language-js">var hello</code> est différente de <code class="language-js">var Hello</code></li>
+            <li>Lors de la déclaration, les variables ne sont pas typées</li>
+            <li>On utilisera généralement la syntaxe camelCase pour le nommage des variables</li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>Les types de variable</h3>
+        <p>En Javascript, une même variable peut contenir des informations de différents types :</p>
+        <table>
+            <thead>
+            <tr>
+                <th>Type</th>
+                <th>Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Chaîne de caractères (string)</td>
+                <td>Texte écrit entre guillemets ou apostrophes</td>
+            </tr>
+            <tr>
+                <td>Nombre entier (int)</td>
+                <td>Nombre entier positif ou négatif</td>
+            </tr>
+            <tr>
+                <td>Nombre à virgule (float)</td>
+                <td>Nombre à virgule positif ou négatif (la virgule s’écrit avec le caractère “.”)</td>
+            </tr>
+            <tr>
+                <td>Booléens (bool)</td>
+                <td>Valeur vraie (true) ou fausse (false)</td>
+            </tr>
+            <tr>
+                <td>Vide (undefined / null)</td>
+                <td>Aucun type, variable</td>
+            </tr>
+            </tbody>
+        </table>
+        <footer>
+            <a href="#" class="info" style="font-size: 0.8em;">Il est possible de tester le type d’une variable avec l’instruction <code class="language-js">typeof</code></a>
+        </footer>
+    </section>
+
+    <section>
+        <h3>Affecter une valeur à une variable</h3>
+        <pre><code class="language-js">let nom = 'Dupont'; // Variable de type string
+let prenom = "Jean"; // Variable de type string
+let message = 'J\'ai compris le Javascript'; // Variable de type string
+let age = 22; // Variable de type int
+let taille = 1.80; // Variable de type float
+let homme = true; // Variable de type bool
+let profession = null; // Variable vide</code></pre>
+    </section>
+
+    <section>
+        <h3>La concaténation</h3>
+        <pre><code class="language-js">let nom = 'Dupont'; // Variable de type string
+let prenom = "Jean"; // Variable de type string
+let message = 'Bonjour ' + nom + ' '  + prenom;</code></pre>
+        <p>⚠️ Le signe "+" étant utilisé pour la concaténation, l’opération ne donne pas forcément le résultat attendu.</p>
+        <pre><code class="language-js">console.log("1" + 1);</code></pre>
+        <img src="assets/images/jcvd.gif" alt="JCVD" class="fragment">
+    </section>
+
+    <section>
+        <h3>Calculs</h3>
+        <p>Il est possible avec le langage JavaScript d'effectuer des opération arithmétiques basiques :</p>
+        <table>
+            <thead>
+            <tr>
+                <th>Opérateur</th>
+                <th>Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>+</td>
+                <td>Addition</td>
+            </tr>
+            <tr>
+                <td>-</td>
+                <td>Soustraction</td>
+            </tr>
+            <tr>
+                <td>/</td>
+                <td>Division</td>
+            </tr>
+            <tr>
+                <td>*</td>
+                <td>Multiplication</td>
+            </tr>
+            <tr>
+                <td>%</td>
+                <td>Modulo (reste de la division)</td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <h3>Calculs</h3>
+        <p>Cet exemple permet de calculer la différence entre deux notes :</p>
+        <pre><code class="language-js">let note1 = 12;
+let note2 = 15;
+alert('Différence entre les deux notes : ' + (note2 - note1));</code></pre>
+    </section>
+
+    <section>
+        <h3>Incrémentation</h3>
+        <p>En programmation, il est souvent nécessaire d'incrémenter une valeur numérique.</p>
+        <p>Cela peut se faire de différentes manières :</p>
+        <pre><code class="language-js">let valeur = 10;
+valeur = valeur + 1; // valeur = 11
+valeur++; // valeur = 12
+valeur = valeur + 2; // valeur = 14
+valeur += 2; // valeur = 16</code></pre>
+    </section>
+
+    <section>
+        <h3>L'objet Math</h3>
+        <p>Pour réaliser des opérations mathématiques plus avancées, JavaScript dispose d'un objet <code class="language-js">Math</code> comprenant entre autres ces méthodes :</p>
+        <ul>
+            <li><code class="language-js">Math.PI</code> : Récupérer la valeur de Pi</li>
+            <li><code class="language-js">Math.round()</code> : Récupérer l'entier le plus proche</li>
+            <li><code class="language-js">Math.random()</code> : Retourne une valeur aléatoire entre 0 et 1</li>
+        </ul>
+        <footer>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math" class="info" target="_blank">Documentation de l'objet Math</a>
+        </footer>
+    </section>
+
+    <section>
+        <h3>Exercice</h3>
+        <div class="instructions">
+            <ol>
+                <li>Générez deux valeurs aléatoires et les afficher avec l'instruction <code class="language-js">prompt()</code></li>
+                <li>Récupérez la valeur saisie dans une variable</li>
+                <li>Afficher la réponse</li>
+            </ol>
+        </div>
+    </section>
+
+    <section>
+        <h3>Exercice - Code de César</h3>
+        <p>Écrire un algorithme permettant d'automatiser la méthode de chiffrement par décalage.</p>
+        <p>Pour cela, vous aurez besoin des méthodes suivantes :</p>
+        <ul>
+            <li><code class="language-js">maVariable.length</code> : Retourne la longueur d'une chaine de caractères</li>
+            <li><code class="language-js">maVariable.charCodeAt()</code> : Retourne le code ASCII d'un caractère à un index</li>
+            <li><code class="language-js">String.fromCharCode()</code> : Retourne le caractère à partir de son code ASCII</li>
+        </ul>
+        <p>L'internaute pourra saisir son message dans un textarea et celui-ci sera chiffré instantanément et affiché sur la page web.</p>
+        <p>
+            Exemple avec clé de chiffrement = 3 :<br>
+            "Code de Cesar" -> Frgh gh Fhvdu
+        </p>
+    </section>
+
+</section>
+

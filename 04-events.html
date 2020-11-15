@@ -1,0 +1,120 @@
+<section id="events">
+
+    <section>
+        <h2>Les évènements</h2>
+    </section>
+
+    <section>
+        <h3>Les évènements en JavaScript</h3>
+        <p>Nous allons tout de suite survoler la gestion des évènements en JavaScript car il s'agit d'une <strong>fonctionnalité très importante</strong> en programmation web et qui nous sera <strong>utile pour la suite</strong> des exercices...</p>
+        <p>Sur une page, un internaute peut <strong>interagir</strong> avec la page de différentes façons (saisie clavier, clique sourie, scroll...).</p>
+        <p>Ces interactions peuvent être <strong>interceptées</strong> par JavaScript à l'aide d'un <strong>écouteur d'évènement</strong> (event listener) :</p>
+        <pre><code class="language-javascript">document.addEventListener('scroll', () => console.log('scroll'))</code></pre>
+        <p>La variable <code class="language-js">document</code> fait référence à la page web et la méthode <code class="language-js">addEventListener()</code> permet d'ajouter un écouteur d'évènement (ici l'événement <code class="language-js">'scroll'</code>).</p>
+        <p>Le second paramètre de la méthode <code class="language-js">addEventListener()</code> est une fonction à exécuter lorsque l'évènement écouté est déclenché.</p>
+    </section>
+
+    <section>
+        <h3>Les évènements en JavaScript</h3>
+        <p>Pour écouter un évènement en JavaScript il faut donc :</p>
+        <ol>
+            <li><strong>Sélectionner un élément</strong> sur lequel écouter un évènement</li>
+            <li><strong>Choisir un évènement</strong> à écouter</li>
+            <li>Attacher une <strong>fonction</strong> à cet évènement</li>
+        </ol>
+    </section>
+
+    <section>
+        <h3>Sélectionner un élément</h3>
+        <p>Plusieurs fonctions permettent de sélectionner des éléments d'une page web en JavaScript :</p>
+        <ul>
+            <li><code class="language-js">getElementsByTagName()</code> : Retourne l'ensemble des éléments ayant le <strong>nom de balise</strong> correspondant</li>
+            <li><code class="language-js">getElementById()</code> : Retourne l'élément ayant l’<strong>id</strong> correspondant</li>
+            <li><code class="language-js">getElementsByClassName()</code> : Retourne l'ensemble des éléments ayant la <strong>classe</strong> correspondante</li>
+            <li><code class="language-js">querySelector()</code> : Retourne le 1er élément correspondant à un <strong>sélecteur</strong></li>
+            <li><code class="language-js">querySelectorAll()</code> : Retourne l'ensemble des éléments correspondant à un <strong>sélecteur</strong></li>
+        </ul>
+        <footer>
+            <a href="#" class="info">Les sélecteurs sont similaires à ceux utilisés en CSS</a>
+        </footer>
+    </section>
+
+    <section>
+        <h3>Choisir un évènement</h3>
+        <p>Il existe plusieurs évènements que l'on peut choisir d'écouter :</p>
+        <ul>
+            <li><code class="language-js">click</code></li>
+            <li><code class="language-js">load</code></li>
+            <li><code class="language-js">mousedown</code></li>
+            <li><code class="language-js">keyup</code></li>
+            <li><code class="language-js">focus</code></li>
+            <li>...</li>
+        </ul>
+        <footer>
+            <a href="#" class="warning" style="font-size: 0.8em;">Les évènements ne fonctionnent pas tous avec les mêmes éléments HTML</a>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/Events" class="info" target="_blank">Liste complète des évènements</a>
+        </footer>
+    </section>
+
+    <section>
+        <h3>Attacher une fonction à l'évènement</h3>
+        <p>Il existe plusieurs manières d'attacher une fonction à un évènement :</p>
+        <p>Fonction nommée</p>
+        <pre><code class="language-js">function logScroll() {
+    console.log('scroll');
+}
+
+document.addEventListener('scroll', logScroll);</code></pre>
+        <p>Fonction anonyme</p>
+        <pre><code class="language-js">document.addEventListener('scroll', function {
+    console.log('scroll');
+});</code></pre>
+        <p>Fonction fléchée (ES6)</p>
+        <pre><code class="language-js">document.addEventListener('scroll', () => console.log('scroll'));</code></pre>
+    </section>
+
+    <section>
+        <h3>Capturing VS Bubbling</h3>
+        <div class="container">
+            <div class="col" style="flex: 2;">
+                <p>Lorsqu'un événement est déclenché, on distingue deux phases :</p>
+                <ul>
+                    <li><strong>Capturing</strong> : Propagation de l'élément global vers l'élément ciblé</li>
+                    <li><strong>Bubbling</strong> : Propagation de l'élément ciblé vers l'élément global</li>
+                </ul>
+            </div>
+            <div class="col">
+                <img src="assets/images/capturing-and-bubbling.png" alt="Capturing and Bubbling">
+            </div>
+        </div>
+        <p>Par défaut, la méthode <code class="language-js">addEventListener()</code> utilise la méthode <strong>Bubbling</strong>.</p>
+    </section>
+
+    <section>
+        <h3>Agir sur un événement</h3>
+        <p>Il est possible de récupérer l'événement déclenché en l'ajoutant en paramètre de la fonction de callback :</p>
+        <pre><code class="language-js">document.addEventListener('click', (event) => console.log(event));</code></pre>
+        <p>Il est ensuite possible de...</p>
+        <ul>
+            <li>Récupérer l'élément cliqué : <code class="language-js">event.target</code></li>
+            <li>Récupérer l'élément écoutant l'événement : <code class="language-js">event.currentTarget</code></li>
+            <li>Annuler l'action par défaut : <code class="language-js">event.preventDefault()</code></li>
+            <li>Stopper la propagation : <code class="language-js">event.stopPropagation()</code></li>
+        </ul>
+        <p>La variable <code class="language-js">this</code> peut également retourner la valeur de <code class="language-js">event.currentTarget</code> (sauf si utilisation d'une fonction fléchée).</p>
+    </section>
+
+    <section>
+        <h3>Exercices</h3>
+        <div class="instructions">
+            <ol>
+                <li>Créer un bouton en HTML et lui attribuer un ID</li>
+                <li>Sélectionner le bouton en JS par son ID</li>
+                <li>Écouter les évènements de type "click"</li>
+                <li>Afficher une alerte lorsque le bouton est cliqué</li>
+            </ol>
+        </div>
+    </section>
+
+</section>
+

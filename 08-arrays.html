@@ -79,6 +79,18 @@ classes.push('DC PRO');</code></pre>
     </section>
 
     <section>
+        <h3>Spread operator</h3>
+        <p>Le spread operator noté <code class="language-js">...</code> permet de décomposer les éléments d'un tableau ou d'un objet.</p>
+        <p>Il peut être utilisé par exemple pour...</p>
+        <pre><code class="language-js">const values = [10, 'test'];
+const john = { firstName: 'John', lastName: 'Doe' };
+
+const otherValues = [12.5, ...values]; // Créer un nouveau tableau en reprenant les éléments d'un tableau précédent
+const otherJohn = { ...john, salary: 1800 }; // Créer un nouvel objet en reprenant les propriétés d'un objet précédent
+console.log(...otherValues); // Passer les éléments d'un tableau en paramètre d'une fonction</code></pre>
+    </section>
+
+    <section>
         <h3>Méthodes avancées</h3>
         <p>Le langage JavaScript dispose de nombreuses méthodes permettant de manipuler rapidement les tableaux.</p>
         <p>Voici quelques méthodes couramment utilisées :</p>

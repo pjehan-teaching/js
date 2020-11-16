@@ -1,0 +1,45 @@
+<section id="json">
+
+    <section>
+        <h2>AJAX</h2>
+    </section>
+
+   <section>
+       <h3>Introduction</h3>
+       <blockquote>
+           Ajax (Asynchronous JavaScript And XML) est une méthode utilisant différentes technologies ajoutées aux navigateurs web entre 1995 et 2005, et dont la particularité est de permettre d'effectuer des requêtes au serveur web et, en conséquence, de modifier partiellement la page web affichée sur le poste client sans avoir à afficher une nouvelle page complète.
+           <cite>Wikipedia</cite>
+       </blockquote>
+   </section>
+
+    <section>
+        <h3>Avant ES6</h3>
+        <p>Avant ES6, il fallait utiliser l’objet XMLHttpRequest pour effectuer une requête en AJAX :</p>
+        <pre><code class="language-js">var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+       var jsonResponse = JSON.parse(xhttp.responseText);
+       console.log(jsonResponse);
+    }
+};
+xhttp.open("GET", "https://api.exchangeratesapi.io/latest", true);
+xhttp.send();</code></pre>
+    </section>
+
+    <section>
+        <h3>Après ES6</h3>
+        <p>Avec ES6, il existe maintenant l'API fetch qui permet de simplifier l'écriture des requêtes AJAX :</p>
+        <pre><code class="language-js">fetch('https://api.fixer.io/latest')
+.then(function(response){
+   return response.json();
+})
+.then(function(jsonResponse){
+   console.log(jsonResponse);
+});</code></pre>
+        <footer>
+            <a href="#" class="danger">Fetch n'est pas compatible avec Internet Explorer</a>
+        </footer>
+    </section>
+
+</section>
+

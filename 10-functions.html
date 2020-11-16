@@ -4,8 +4,142 @@
         <h2>Les fonctions</h2>
     </section>
 
-    <!-- Fonction de callback (avec exemple de création) -->
-    <!-- Arrow functions (expliquer le changement de context) -->
+    <section>
+        <h3>Introduction</h3>
+        <div class="container">
+            <div class="col" style="flex: 2;">
+                <ul>
+                    <li>Javascript met à disposition des développeurs de nombreuses fonctions.</li>
+                    <li>Les fonctions sont comme des outils que l’on peut utiliser à volonté lorsqu’on en a besoin.</li>
+                    <li>Cependant, il est également possible de créer ses propres fonctions.</li>
+                </ul>
+            </div>
+            <div class="col">
+                <img src="assets/images/function.png" alt="Function">
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h3>Créer un fonction</h3>
+        <pre><code class="language-js">function multiplication(val1, val2) {
+    const result = val1 * val2;
+    return result;
+}</code></pre>
+        <p>Le mot clé <code class="language-js">function</code> permet de déclarer une fonction.</p>
+        <p>Une fonction peut avoir un nom (ici <code class="language-js">multiplication</code>) ou bien être anonyme.</p>
+        <p>Elle peut contenir zéro, un ou plusieurs paramètres (non typés).</p>
+        <p>Le corps d'une fonction est délimitée par des accolades.</p>
+        <p>Une fonction peut retourner des données.</p>
+    </section>
+
+    <section>
+        <h3>Portée des variables (scope)</h3>
+        <p>Une variable déclarée en dehors d'une fonction est accessible dans la fonction :</p>
+        <pre><code class="language-js">let age = 25;
+
+function anniversaire() {
+  age++;
+  return "Vous avez " + age + " ans."; // Ici, la variable age est bien accessible
+}
+
+var message = anniversaire();
+console.log(message);</code></pre>
+    </section>
+
+    <section>
+        <h3>Portée des variables (scope)</h3>
+        <p>Une variable déclarée dans une fonction n'est pas accessible en dehors de la fonction :</p>
+        <pre><code class="language-js">function anniversaire(age) {
+  age++;
+}
+
+anniversaire(10);
+console.log("Vous avez " + age + " ans"); // Ici, la variable age n'est PAS accessible</code></pre>
+    </section>
+
+    <section>
+        <h3>Les callbacks</h3>
+        <blockquote>
+            En informatique, une fonction de rappel (callback en anglais) ou fonction de post-traitement est une fonction qui est passée en argument à une autre fonction.
+            <cite>Wikipedia</cite>
+        </blockquote>
+    </section>
+
+    <section>
+        <h3>Les callbacks - setTimeout</h3>
+        <p>La fonction <code class="language-js">setTimeout()</code> de JavaScript permet de déclencher une fonction de façon différée :</p>
+        <pre><code class="language-js">document.querySelector('button').addEventListener('click', function() {
+    let self = this; // Permet d'enregistrer l'élément cliqué car this n'aura pas la bonne valeur dans la fonction de callback du setTimeout
+    setTimeout(function() {
+        self.style.display = 'none';
+    }, 2000); // 2000ms permet de faire disparaitre le bouton après 2 secondes
+    console.log('function end');
+});</code></pre>
+        <p>⚠️ l'exécution de ce script étant <strong>asynchrone</strong>, le message 'function end' apparaîtra avant que le bouton ne disparaisse.</p>
+    </section>
+
+    <section>
+        <h3>Les callback - setInterval</h3>
+        <p>La fonction <code class="language-js">setInterval()</code> de JavaScript permet de déclencher une fonction à intervalle régulier :</p>
+        <pre><code class="language-js">let count = 0;
+function counter() {
+  count++;
+  console.log(count);
+  if (count > 5) {
+    clearInterval(interval); // Permet de stopper l'exécution en boucle du script
+  }
+}
+
+const interval = setInterval(counter, 1000);</code></pre>
+    </section>
+
+    <section>
+        <h3>Les callbacks</h3>
+        <p>Il est très simple de mettre en place une fonction de callback soit même.</p>
+        <p>Pour cela, il suffit de créer une fonction prenant en paramètre une autre fonction et d'appeler cette fonction à l'intérieur :</p>
+        <pre><code class="language-js">function trySomething(success, failure) {
+    if (Math.random() > 0.5) {
+        setTimeout(success, 2000);
+    } else {
+        failure('An error occurred!');
+    }
+}</code></pre>
+        <footer>
+            <a href="#" class="info" style="font-size: 0.7em;">Les systèmes de Promises que nous aborderons plus tard fonctionnent de cette manière</a>
+        </footer>
+    </section>
+
+    <section>
+        <h3>Arrow functions</h3>
+        <p>Avec ES6 est apparu une nouvelle syntaxe pour créer des fonctions appelée <strong>arrow function</strong>.</p>
+        <pre><code class="language-js">setTimeout(function() {
+    return console.log('ok');
+}, 2000);
+
+setTimeout(() => console.log('ok'), 2000); // Le return est implicite et le ";" inutile</code></pre>
+        <pre><code class="language-js">form.addEventListener('submit', function(event) {
+    event.preventDefault();
+    console.log('form submitted');
+});
+
+form.addEventListener('submit', event => { // Si il n'y a qu'un seul paramètre, les parenthèses sont optionnelles
+    event.preventDefault();
+    console.log('form submitted');
+});</code></pre>
+    </section>
+
+    <section>
+        <h3>Arrow functions - le scope</h3>
+        <p>Contrairement aux fonctions classiques, les arrow functions ne modifient pas la valeur de la variable <code class="language-js">this</code>.</p>
+        <p>Nous pourrions donc réécrire le code précédent de cette manière :</p>
+        <pre><code class="language-js">document.querySelector('button').addEventListener('click', function() {
+    // let self = this; <-- Inutile à présent
+    setTimeout(() => this.style.display = 'none', 2000);
+    console.log('function end');
+});</code></pre>
+        <p>⚠️ Cette différence subtile est très importante et sera prépondérante dans un framework tel que ReactJS.</p>
+    </section>
 
 </section>
 

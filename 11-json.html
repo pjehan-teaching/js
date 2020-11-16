@@ -1,0 +1,60 @@
+<section id="json">
+
+    <section>
+        <h2>Le format JSON</h2>
+    </section>
+
+    <section>
+        <h3>Introduction</h3>
+        <p>JSON (JavaScript Object Notation) est un format permettant de stocker et d’échanger des données.</p>
+        <p>Il n’est pas lié à un langage de programmation en particulier :</p>
+        <pre><code class="language-js">// JavaScript
+JSON.stringify(data);</code></pre>
+        <pre><code class="language-php">// PHP
+json_encode(data);</code></pre>
+        <pre><code class="language-csharp">// C#
+System.Web.Helpers.Json.Encode(data);</code></pre>
+        <pre><code class="language-java">// Java
+new JSONObject(data);</code></pre>
+    </section>
+
+    <section>
+        <h3>Contraintes</h3>
+        <p>Les données au format JSON doivent respecter les contraintes suivantes :</p>
+        <ul>
+            <li>Les données sont stockées sous forme de <strong>clé / valeur</strong></li>
+            <li>Les données sont séparées par une <strong>virgule</strong></li>
+            <li>Les <strong>accolades</strong> permettent de contenir un <strong>objet</strong></li>
+            <li>Les <strong>crochets</strong> permettent de contenir un <strong>tableau</strong></li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>Exemple</h3>
+        <pre><code class="language-json">{
+    "glossary": {
+        "title": "example glossary",
+        "GlossDiv": {
+            "title": "S",
+            "GlossList": {
+                "GlossEntry": {
+                    "ID": "SGML",
+                    "GlossTerm": "Standard Generalized Markup Language",
+                    "Acronym": "SGML",
+                    "GlossDef": {
+                        "para": "A meta-markup language, used to create markup languages such as DocBook.",
+                        "GlossSeeAlso": ["GML", "XML"]
+                    },
+                    "GlossSee": "markup"
+                }
+            }
+        }
+    }
+}</code></pre>
+        <footer>
+            <a href="#" class="info">L'autre format souvent utilisé est XML</a>
+        </footer>
+    </section>
+
+</section>
+

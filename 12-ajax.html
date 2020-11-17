@@ -38,7 +38,66 @@ xhttp.send();</code></pre>
 });</code></pre>
         <footer>
             <a href="#" class="danger">Fetch n'est pas compatible avec Internet Explorer</a>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch" target="_blank" class="info">Documentation</a>
         </footer>
+    </section>
+
+    <section>
+        <h3>La méthode POST</h3>
+        <p>Pour gérer l'envoi de données vers un serveur, il faut utiliser la méthode HTTP <code>POST</code> :</p>
+        <pre><code class="language-js">fetch('https://monapi.com/person', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({ firstName: 'John', lastName: 'Doe' })
+})
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch((error) => console.error(error))
+;</code></pre>
+    </section>
+
+    <section>
+        <h3>Promise</h3>
+        <p>L'API fetch de JavaScript utilise le système de Promesses (Promises) introduit dans ES6.</p>
+        <p>Ce système permet de simplifier l'écriture de code <strong>asynchrone</strong> en évitant de tomber dans le <strong>callback hell</strong>.</p>
+        <img src="assets/images/promises.png" alt="Promises">
+    </section>
+
+    <section>
+        <h3>Utiliser Promise</h3>
+        <p>Pour construire une fonction asynchrone utilisant l'objet Promise, il faut que notre fonction retourne une instance de <code class="language-js">Promise</code> :</p>
+        <pre><code class="language-js">function fetchData() {
+    return new Promise();
+}</code></pre>
+    </section>
+
+    <section>
+        <h3>Utiliser Promise</h3>
+        <p>Le constructeur de <code class="language-js">Promise</code> prend 2 paramètres.</p>
+        <p>Le 1er paramètre est une fonction a appeler en cas de succès et le second est également une fonction a appeler en cas d'échec :</p>
+        <pre><code class="language-js">function fetchData() {
+    return new Promise(function(resolve, reject) {
+
+    });
+}</code></pre>
+    </section>
+
+    <section>
+        <h3>Utiliser Promise</h3>
+        <p>Enfin, il faut implémenter le code de cette fonction :</p>
+        <pre class="line-numbers" data-line="5,8"><code class="language-js">function fetchData() {
+    return new Promise(function(resolve, reject) {
+        if (Math.random() > 0.5) {
+            setTimeout(function() {
+                resolve('success');
+            }, 2000);
+        } else {
+            reject('failure');
+        }
+    });
+}</code></pre>
     </section>
 
 </section>

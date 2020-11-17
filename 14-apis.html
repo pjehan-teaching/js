@@ -1,0 +1,112 @@
+<section id="apis">
+
+    <section>
+        <h2>Web APIs</h2>
+    </section>
+
+   <section>
+       <h3>Introduction</h3>
+       <p>JavaScript propose de nombreuses APIs permettant d'effectuer des opérations complexes de manière simplifiée.</p>
+       <ul>
+           <li>Gestion du WebStorage</li>
+           <li>Géolocalisation</li>
+           <li>WebSockets</li>
+           <li>Fetch</li>
+           <li>Drag & Drop</li>
+           <li>...</li>
+       </ul>
+       <footer>
+           <a href="https://developer.mozilla.org/en-US/docs/Web/API" class="info" target="_blank">Documentation</a>
+       </footer>
+   </section>
+
+    <section>
+        <h3>WebStorage</h3>
+        <blockquote>
+            L'API Stockage Web fournit des mécanismes par lesquels les navigateurs web peuvent stocker des paires de clé-valeur, d'une manière plus intuitive qu'en utilisant des cookies.
+            <cite>Mozilla Developer Network</cite>
+        </blockquote>
+        <footer>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API" class="info" target="_blank">Documentation</a>
+        </footer>
+    </section>
+
+    <section>
+        <h3>localStorage / sessionStorage</h3>
+        <p>Le localStorage et le sessionStorage sont deux objets permettant de <strong>stocker des données</strong> liées à une origine (domaine) dans un navigateur.</p>
+        <p>sessionStorage est disponible le temps de la <strong>session de l’utilisateur</strong> c’est-à-dire que lorsque celui-ci ferme la fenêtre du navigateur, les données sont perdues.</p>
+        <p>localStorage permet de stocker les données de l’internaute de façon <strong>permanente</strong>.</p>
+    </section>
+
+    <section>
+        <h3>Interagir avec localStorage</h3>
+        <pre><code class="language-js">localStorage.setItem('username', 'johndoe');
+
+console.log(localStorage.getItem('username'));
+
+localStorage.removeItem('username'); // Supprimer la clé 'username'
+localStorage.clear(); // Nettoyer l'ensemble des données
+
+window.addEventListener('storage', function(event) {
+  console.log("Key : " + event.key);
+  console.log("Old value : " + event.oldValue);
+  console.log("New value : " + event.newValue);
+});</code></pre>
+    </section>
+
+    <section>
+        <h3>Exercice</h3>
+        <div class="instructions">
+            <ol>
+                <li>Créer une page web affichant un color picker</li>
+                <li>Lorsque l'utilisateur sélectionne une couleur, l'appliquer en background de la page</li>
+                <li>Enregistrer cette valeur dans le localStorage pour que la couleur soit conservée au rechargement de la page</li>
+            </ol>
+        </div>
+    </section>
+
+    <section>
+        <h3>Géolocalisation</h3>
+        <p>Avec le développement des smartphone, la nécessité de récupérer la géolocalisation des internautes devient de plus en plus utile.</p>
+        <p>L'API Geolocation de JavaScript permet de répondre à ce besoin :</p>
+        <pre><code class="language-js">// Récupérer la géolocalisation d'un internaute à un instant T
+navigator.geolocation.getCurrentPosition(function(position) {
+  console.log("latitude: " + position.coords.latitude);
+  console.log("longitude: " + position.coords.longitude);
+});
+
+// Suivre la géolocalisation d'un internaute de façon continue
+navigator.geolocation.watchPosition(function(position) {
+  console.log("latitude: " + position.coords.latitude);
+  console.log("longitude: " + position.coords.longitude);
+});</code></pre>
+        <footer>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Geolocation" class="info" target="_blank">Documentation</a>
+        </footer>
+    </section>
+
+    <section>
+        <h3>Drag & Drop</h3>
+        <p>L'API Drag & Drop permet de gérer les glisser / déposer dans le navigateur :</p>
+        <pre><code class="language-js">document.getElementById("draggable").setAttribute("draggable", true);
+
+document.getElementById("draggable").addEventListener("dragstart", function(event){
+    event.dataTransfer.setData("elementId", event.currentTarget.id);
+});
+
+document.getElementById("droppable").addEventListener("dragover", function(event){
+    event.preventDefault();
+});
+
+document.getElementById("droppable").addEventListener("drop", function(event){
+    event.preventDefault();
+    var elementId = event.dataTransfer.getData("elementId");
+    event.currentTarget.appendChild(document.getElementById(elementId));
+});</code></pre>
+        <footer>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API" class="info" target="_blank">Documentation</a>
+        </footer>
+    </section>
+
+</section>
+

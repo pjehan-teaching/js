@@ -1,0 +1,162 @@
+<section id="poo">
+
+    <section>
+        <h2>Programmation Orientée Objet (POO)</h2>
+    </section>
+
+   <section>
+       <h3>Introduction</h3>
+       <p>Tous les objets JavaScript ont un prototype. Le prototype est également un objet.</p>
+       <p>Tous les objets JavaScript ont des propriétés et méthodes pouvant être hérités de leur prototype.</p>
+   </section>
+
+    <section>
+        <h3>Création d'un prototype</h3>
+        <p>Avant ES6, JavaScript n'utilisait pas le mot clé <code class="language-js">class</code> pour créer une classe mais une fonction constructor.</p>
+        <pre><code class="language-js">var Person = function (firstName, lastName) {
+  this.firstName = firstName;
+  this.lastName = lastName;
+}
+
+Person.prototype.fullName = function() {
+  return this.firstName + " " + this.lastName;
+};
+
+Person.prototype.hello = function() {
+  console.log("Hello ! My name is " + this.fullName());
+};
+
+let john = new Person("John", "Doe");
+console.log(john.hello());</code></pre>
+    </section>
+
+    <section>
+        <h3>Héritage</h3>
+        <p>Pour faire de l'héritage, nous allons utiliser la méthode <code class="language-js">create()</code> de <code class="language-js">Object</code> :</p>
+        <pre><code class="language-js">let Student = Object.create(Person);
+Student.prototype.average = function() {
+  var total = 0;
+  for (var i = 0; i < grades.length; i++) {
+    total += grades[i];
+  }
+  return total / grades.length;
+};
+
+var Teacher = Object.create(Person);</code></pre>
+    </section>
+
+    <section>
+        <h3>Nouveautés de l'ES6</h3>
+        <p>Cependant, avec l'arrivée de l'ES6, une syntaxe plus habituelle est apparue pour écrire du code orienté objet.</p>
+        <p>Il est donc maintenant possible d'utiliser le mot clé <code class="language-js">class</code> pour déclarer une nouvelle classe :</p>
+        <pre><code class="language-js">class Person {
+    constructor(firstName = "John", lastName = "Doe") {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    fullName() {
+        return this.firstName + " " + this.lastName;
+    }
+
+    hello() {
+        console.log("Hello ! My name is " + this.fullName());
+    }
+}
+</code></pre>
+    </section>
+
+    <section>
+        <h3>Héritage</h3>
+        <p>Il est également possible d'utiliser le mot clé <code class="language-js">extends</code> pour réaliser de l'héritage :</p>
+        <pre><code class="language-js">class Student extends Person {
+
+    constructor(firstName, lastName, grades) {
+        super(firstName, lastName);
+        this.grades = grades
+    }
+
+    average() {
+        let total = 0;
+        for (var i = 0; i < grades.length; i++) {
+            total += grades[i];
+        }
+        return total / grades.length;
+    }
+
+}</code></pre>
+    </section>
+
+    <section>
+        <h3>Limitations</h3>
+        <p>Malheureusement, toutes les fonctionnalités de la POO ne sont pas disponibles en JavaScript :</p>
+        <ul>
+            <li>Pas de mot clé <code class="language-js">abstract</code> pour marquer une classe comme étant abstraite</li>
+            <li>Pas d'interface</li>
+            <li>Pas de mots clés <code class="language-js">public</code>, <code class="language-js">private</code> ou <code class="language-js">protected</code> pour définir la visibilité des propriétés ou des méthodes.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>Les modules</h3>
+        <p>Une autre nouveauté de l'ES6 est la possibilité d'exporter / importer des modules.</p>
+        <p>Les modules permettent d'améliorer la structure du code source et rendre plus facilement des composants ré-utilisables.</p>
+        <div class="container">
+            <div class="col">
+                Person.js
+                <pre><code class="language-js">export default class Person {
+
+}</code></pre>
+            </div>
+            <div class="col">
+                app.js
+                <pre><code class="language-js">import Person from 'Person.js'</code></pre>
+            </div>
+        </div>
+        <p>Le mot clé <code class="language-js">default</code> permet de définir l'élément qui sera ensuite importé par défaut.</p>
+        <p>Lorsque l'on import l'élément par défaut, on peux lui donner le nom que l'on souhaite. Par exemple :</p>
+        <pre><code class="language-js">import Personne from 'Person.js'</code></pre>
+    </section>
+
+    <section>
+        <h3>Les modules</h3>
+        <p>Il est également possible d'exporter plusieurs données depuis un même fichier :</p>
+        <div class="container">
+            <div class="col">
+                Person.js
+                <pre><code class="language-js">export const GENDERS_MALE = 'male';
+export const GENDERS_FEMALE = 'female';
+
+export default class Person {
+
+}</code></pre>
+            </div>
+            <div class="col">
+                app.js
+                <pre><code class="language-js">import
+    Person,
+    {GENDERS_MALE, GENDERS_FEMALE}
+from 'Person.js'</code></pre>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h3>Les modules</h3>
+        <p>Il est également possible de donner un alias aux modules importés :</p>
+        <div class="container">
+            <div class="col">
+                Person.js
+                <pre><code class="language-js">export class Person {
+
+}</code></pre>
+            </div>
+            <div class="col">
+                app.js
+                <pre><code class="language-js">import { Person as Personne } from 'Person.js'</code></pre>
+            </div>
+        </div>
+    </section>
+
+</section>
+

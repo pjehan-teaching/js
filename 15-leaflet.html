@@ -1,0 +1,152 @@
+<section id="leaflet">
+
+    <section>
+        <h2>Leaflet 🗺️</h2>
+    </section>
+
+    <section>
+        <h3>Introduction</h3>
+        <p>Leaflet est une librairie OpenSource basée sur OpenStreetMap (OSM).</p>
+        <p>Elle permet d'afficher une carte du monde (Tiled web map ou Slippy map) et d'interagir avec celle-ci.</p>
+        <p>Son concurrent principal est <a href="https://developers.google.com/maps/documentation" target="_blank">Google Map</a> qui est une solution intéressante mais limité en utilisation (payant lorsque l'on dépasse une limite de requêtes).</p>
+        <img src="assets/images/leaflet.png" alt="Leaflet">
+    </section>
+
+    <section>
+        <h3>Mise en place du projet</h3>
+        <p>Pour utiliser Leaflet de manière moderne, nous allons utiliser WebPack :</p>
+        <pre><code class="language-shell">mkdir demo-leaflet
+cd demo-leaflet
+npm init -y
+npm install --save-dev webpack webpack-cli
+npm install leaflet</code></pre>
+    </section>
+
+    <section>
+        <h3>Mise en place du projet</h3>
+        <p>Nous allons ensuite créer un dossier "dist" et à l'intérieur un fichier index.html qui contiendra cette balise :</p>
+        <pre><code class="language-html">&lt;script src="main.js"&gt;&lt;/script&gt;</code></pre>
+        <p>Le dossier dist contiendra les fichiers compilés qui seront utilisés en production.</p>
+    </section>
+
+    <section>
+        <h3>Mise en place</h3>
+        <p>Nous allons maintenant créer un fichier webpack.config.js qui contiendra la configuration de WebPack :</p>
+        <pre><code class="language-js">const path = require('path');
+
+module.exports = {
+  entry: './src/index.js',
+  output: {
+    filename: 'main.js',
+    path: path.resolve(__dirname, 'dist'),
+  },
+};</code></pre>
+    </section>
+
+    <section>
+        <h3>Mise en place</h3>
+        <p>Enfin, nous allons modifier le fichier package.json :</p>
+        <pre><code class="language-js">"scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack --watch",
+    "build": "webpack"
+},</code></pre>
+    </section>
+
+    <section>
+        <h3>Mise en place</h3>
+        <p>Nous allons maintenant devoir charger le JS et le CSS de Leaflet.</p>
+        <p>Pour le JS, il suffit d'ajouter cette ligne dans le fichier script.js :</p>
+        <pre><code class="language-js">import 'leaflet';</code></pre>
+        <p>Pour le CSS, nous allons devoir installer un loader Webpack</p>
+        <pre><code class="language-shell">npm install --save-dev style-loader css-loader</code></pre>
+        <p>Puis importer le fichier CSS depuis le fichier script.js :</p>
+        <pre><code class="language-js">import 'leaflet/dist/leaflet.css';</code></pre>
+        <p>Modifier ensuite le fichier webpack.config.js :</p>
+        <pre><code class="language-js">module: {
+    rules: [
+      { test: /\.css$/i, use: ["style-loader", "css-loader"] },
+      { test: /\.(png|svg|jpg|jpeg|gif)$/i, type: 'asset/resource' }
+    ],
+  }</code></pre>
+    </section>
+
+    <section>
+        <h3>Afficher une carte</h3>
+        <p>Pour afficher une carte sur notre page web, nous allons commencer par créer une balise dans le code HTML :</p>
+        <pre><code class="language-html">&ltdiv id="mapid"&gt;&lt;/div&gt;</code></pre>
+        <p>et ajouter également du code CSS pour que la map soit visible :</p>
+        <pre><code class="language-js">#mapid { height: 300px; }</code></pre>
+    </section>
+
+    <section>
+        <h3>Afficher une carte</h3>
+        <p>Ensuite, nous allons créer notre map dans la balise <code class="language-html">&lt;div&gt;</code> depuis le code JavaScript :</p>
+        <pre><code class="language-js">let myMap = L.map('mapid').setView([51.505, -0.09], 13);</code></pre>
+        <p>A présent, le coeur du système est mis en place mais il faut encore l'habiller avec un "Tile Layer" c'est à dire une library d'images à afficher dans la map...</p>
+    </section>
+
+    <section>
+        <h3>Mapbox</h3>
+        <p>Pour afficher nos tiles, nous allons utiliser <a href="https://www.mapbox.com" target="_blank">Mapbox</a> :</p>
+        <pre><code class="language-js">L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox/streets-v11',
+    accessToken: 'your.mapbox.access.token' // <-- Mettre le token ici
+}).addTo(myMap);</code></pre>
+        <p>Ce service nécessitant une clé API, nous allons en créer une <a href="https://www.mapbox.com/studio/account/tokens/" target="_blank">ici</a>.</p>
+        <p>⚠️ N'oubliez pas d'ajouter des restrictions sur les clés API que vous souhaitez utiliser sur des sites en ligne sinon n'importe qui pourra utiliser votre clé et vous risquez de dépasser la limite d'utilisation.</p>
+    </section>
+
+    <section>
+        <h3>Afficher un marker</h3>
+        <p>Pour afficher un nouveau marker sur la page, nous pouvons utiliser ce code JavaScript :</p>
+        <pre><code class="language-js">let marker = L.marker([51.5, -0.09]).addTo(myMap);</code></pre>
+        <p>⚠️ Une erreur <a href="https://github.com/Leaflet/Leaflet/issues/4968" target="_blank">connue</a> liée à l'utilisation de Webpack peut survenir lors de l'affichage du marker. Pour solutionner ce problème, vous pouvez ajouter ces lignes de code juste après les imports :</p>
+        <pre><code class="language-js">delete L.Icon.Default.prototype._getIconUrl;
+
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
+  iconUrl: require('leaflet/dist/images/marker-icon.png'),
+  shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
+});</code></pre>
+    </section>
+
+    <section>
+        <h3>Ajouter un marker</h3>
+        <p>Vous pouvez également afficher une popup lorsqu'un internaute clique sur un marker :</p>
+        <pre><code class="language-js">marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();</code></pre>
+    </section>
+
+    <section>
+        <h3>Plugins</h3>
+        <p>Leaflet dispose de nombreux <a href="https://leafletjs.com/plugins.html" target="_blank">plugins</a> pour ajouter de nouvelles fonctionnalités comme par exemple :</p>
+        <ul>
+            <li>Regroupement de markers par cluster</li>
+            <li>Affichage de "points chauds" (heatmap)</li>
+            <li>Géolocalisation</li>
+            <li>Minimap</li>
+            <li>...</li>
+        </ul>
+        <p>Il existe également d'autres APIs liée à OSM...</p>
+        <ul>
+            <li><a href="https://nominatim.org" target="_blank">Nominatim</a> : Convertir une address en lat/lng</li>
+            <li><a href="https://photon.komoot.io/" target="_blank">Photon</a> : Autocomplete sur les adresses</li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>Exercice</h3>
+        <div class="instructions">
+            <ul>
+                <li>Afficher une map avec Leaflet</li>
+                <li>Ajouter un bouton à côté de la map pour géolocaliser l'internaute</li>
+                <li>Afficher un marker avec une popup "Vous êtes ici"</li>
+                <li>Utiliser l'API "Etat des stations de vélos en libre-service en temps réel" du site <a href="https://data.rennesmetropole.fr" target="_blank">data.rennesmetropole.fr</a> pour afficher les stations de vélo sur la map</li>
+            </ul>
+        </div>
+    </section>
+
+</section>
+

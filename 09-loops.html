@@ -31,7 +31,7 @@ console.log('Bonne année !!');</code></pre>
     <section>
         <h3>La boucle for</h3>
         <p>La boucle for est similaire à la boucle while mais elle permet d'instancier, d'initialiser et de redéfinir la valeur d’une variable plus facilement :</p>
-        <pre><code class="language-js">for(var pourcentage = 0; pourcentage < 100; pourcentage++) {
+        <pre><code class="language-js">for(let pourcentage = 0; pourcentage < 100; pourcentage++) {
     console.log('Chargement en cours. ' + pourcentage + '% effectué...');
 }</code></pre>
         <footer>
@@ -55,7 +55,7 @@ countries.forEach(function(country) {
         <p>Cette boucle également de boucler sur les éléments d'un tableau :</p>
         <pre><code class="language-js">const countries = ['France', 'Germany', 'Belgium'];
 
-for (country of countries) {
+for (let country of countries) {
     console.log(country);
 }</code></pre>
     </section>

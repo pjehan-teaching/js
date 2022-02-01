@@ -13,7 +13,7 @@
         <div class="container">
             <div class="col">
                 <p>index.html</p>
-                <pre><code class="language-html">&lt;script type="text/javascript" src="script.js"&gt;&lt;/script&gt;</code></pre>
+                <pre><code class="language-html">&lt;script type="text/javascript" src="script.js" defer&gt;&lt;/script&gt;</code></pre>
             </div>
             <div class="col">
                 <p>script.js</p>
@@ -21,7 +21,8 @@
             </div>
         </div>
         <footer>
-            <a href="#" class="warning" style="font-size: 0.6em">Il est préférable de positionner la balise &lt;script&gt; avant la fermeture de la balise &lt;body&gt;</a>
+            <a href="#" class="warning" style="font-size: 0.7em">Il est préférable de positionner la balise &lt;script&gt; avant la fermeture de la balise &lt;body&gt;</a>
+            <a href="#" class="info" style="font-size: 0.7em">L'attribut <code>defer</code> permet d'attendre que le DOM soit chargé avant d'exécuter le code JS</a>
         </footer>
     </section>
 

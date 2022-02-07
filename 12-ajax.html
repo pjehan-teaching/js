@@ -75,8 +75,8 @@ xhttp.send();</code></pre>
 
     <section>
         <h3>Utiliser Promise</h3>
-        <p>Le constructeur de <code class="language-js">Promise</code> prend 2 paramètres.</p>
-        <p>Le 1er paramètre est une fonction a appeler en cas de succès et le second est également une fonction a appeler en cas d'échec :</p>
+        <p>Le constructeur de <code class="language-js">Promise</code> prend en paramètre 1 fonction prenant elle-même 2 paramètres.</p>
+        <p>Le 1er paramètre est une fonction a appeler en cas de succès et le second est également une fonction à appeler en cas d'échec :</p>
         <pre><code class="language-js">function fetchData() {
     return new Promise(function(resolve, reject) {
 

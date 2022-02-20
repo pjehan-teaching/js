@@ -1,0 +1,489 @@
+<section id="testing">
+
+    <section>
+        <h2>Tester son code JavaScript</h2>
+    </section>
+
+    <section>
+        <h3>Niveaux de test</h3>
+        <ol>
+            <li>
+                <strong>Tests unitaires</strong> (unit tests) : Tester des fonctionnalités individuellement
+            </li>
+            <li>
+                <strong>Tests d'intégration</strong> (integration tests) : Tester des fonctionnalités dans leur ensemble
+            </li>
+            <li>
+                <strong>Tests système</strong> (system tests) : Tester l'ensemble du système
+            </li>
+            <li>
+                <strong>Tests d'acceptation</strong> (operational acceptance tests) : Tester le produit final en suivant
+                des cahiers de recette
+            </li>
+        </ol>
+    </section>
+
+    <section>
+        <h3>Niveaux de test</h3>
+        <img src="assets/images/testing.png" alt="Testing">
+    </section>
+
+    <section>
+        <h3>Techniques de conception</h3>
+        <ol>
+            <li>
+                <strong>Boîte blanche</strong> (white box) : Tester la structure interne d'une application. Nécessite
+                des connaissances en programmation. (Tests unitaires / d'intégration)
+            </li>
+            <li>
+                <strong>Boîte noire</strong> (black box) : Tester les fonctionnalités d'une application. Ne nécessite
+                pas de connaissances en programmation. (Tests système / d'acceptation)
+            </li>
+        </ol>
+    </section>
+
+    <section>
+        <h3>Intégration continue</h3>
+        <p>
+            Technique permettant de vérifier <strong>régulièrement</strong> que les modifications réalisées dans le code
+            source n'entraîne pas de <strong>regressions</strong>.
+        </p>
+        <img src="/assets/images/ci.png" alt="CI">
+    </section>
+
+    <section>
+        <h3>Intégration continue</h3>
+        <div class="container">
+            <div class="col">
+                <img src="/assets/images/jenkins.jpeg" alt="Jenkins">
+            </div>
+            <div class="col">
+                <img src="/assets/images/travisci.png" alt="Travis CI">
+            </div>
+            <div class="col">
+                <img src="/assets/images/circleci.png" alt="Circle CI">
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h3>BDD</h3>
+        <blockquote>
+            <p>
+                Le behavior-driven development (ou BDD) met en avant le langage naturel et les interactions dans le
+                processus de développement logiciel. Les développeurs utilisant le BDD utilisent un <strong>langage
+                naturel</strong> en combinaison avec le langage du domaine pour décrire l'objectif et le bénéfice de
+                leur code.
+            </p>
+            <cite>- Wikipedia</cite>
+        </blockquote>
+        <pre><code class="language-js">it('check PI value', () => {
+    expect(Math.PI).toBe(3.141592653589793);
+});</code></pre>
+    </section>
+
+    <section>
+        <h3>TDD</h3>
+        <blockquote>
+            <p>
+                Le Test-Driven Development (TDD), ou développements pilotés par les tests en français, est une méthode de
+                développement de logiciel qui consiste à <strong>écrire chaque test avant d'écrire le code</strong>
+                source d'un logiciel, de façon itérative.
+            </p>
+            <cite>- Wikipedia</cite>
+        </blockquote>
+    </section>
+
+    <section>
+        <h3>Jest</h3>
+        <div class="container">
+            <div class="col">
+                <p>
+                    Jest est un framework de test permettant de tester notre code JavaScript.
+                </p>
+                <p>
+                    Il va nous permettre d'écrire des <strong>tests unitaires</strong> afin de tester le code de nos
+                    fonctions ou de nos classes.
+                </p>
+                <p>
+                    Jest utilise <strong>NodeJS</strong> pour exécuter les tests.
+                </p>
+            </div>
+            <div class="col">
+                <img src="assets/images/jest.png" alt="Jest">
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h3>Jest - Installation</h3>
+        <p>Pour installer Jest, il suffit de récupérer le package via npm :</p>
+        <pre><code class="language-shell">npm install --save-dev jest</code></pre>
+        <p>
+            Ensuite, nous allons ajouter une ligne dans les scripts du fichier <code>package.json</code>
+            pour démarrer l'exécution de nos tests :
+        </p>
+        <pre><code class="language-json">{
+    "scripts": {
+        "test": "jest"
+    }
+}</code></pre>
+        <p>Il suffit ensuite de créer des fichiers ayant l'extension <code>.test.js</code> pour écrire nos tests.</p>
+    </section>
+
+    <section>
+        <h3>Jest - Installation</h3>
+        <p>
+            L'exécution de Jest utilisant NodeJS, il n'est actuellement pas possible d'utiliser la syntaxe
+            <code class="language-js">import</code> / <code class="language-js">export</code> de l'ES6.
+        </p>
+        <p>
+            Nous allons donc utiliser Babel pour résoudre ce problème en commençant par créer un fichier
+            <code>.babelrc</code> à la racine du projet :
+        </p>
+        <pre><code class="language-json">{
+  "env": {
+    "test": {
+      "plugins": ["@babel/plugin-transform-modules-commonjs"]
+    }
+  }
+}</code></pre>
+        <p>Puis en installant le package NPM correspondant :</p>
+        <pre><code class="language-shell">npm install --save-dev @babel/plugin-transform-modules-commonjs</code></pre>
+    </section>
+
+    <section>
+        <h3>Jest - Installation</h3>
+        <p>
+            Ensuite, nous allons installer un package NPM pour avoir de l'auto-completion sur les fonctions de Jest dans
+            notre éditeur de code :
+        </p>
+        <pre><code class="language-shell">npm install --save-dev @types/jest</code></pre>
+        <p>
+            Puis nous allons ajouter une configuration dans le fichier <code>jsconfig.json</code> :
+        </p>
+        <pre><code class="language-json">{
+    "typeAcquisition": {
+        "include": [
+            "jest"
+        ]
+    }
+}</code></pre>
+    </section>
+
+    <section>
+        <h3>Jest - Installation</h3>
+        <p>
+            Enfin, nous allons utiliser le CLI de Jest pour générer un fichier de configuration
+            <code>test.jest.config</code> :
+        </p>
+        <pre><code class="language-shell">./node_modules/.bin/jest --init</code></pre>
+    </section>
+
+    <section>
+        <h3>Jest - Exemple</h3>
+        <p>
+            Nous allons maintenant découvrir l'utilisation de la librairie Jest en s'appuyant sur un exemple concret.
+        </p>
+        <p>
+            Nous allons créer une fonction permettant de <strong>convertir des valeurs monétaires</strong> et tester ces
+            fonctionnalités.
+        </p>
+        <p>
+            Afin de respecter le <abbr title="Test Drive Development">TDD</abbr>, nous allons écrire les tests avant
+            d'écrire la fonction correspondante.
+        </p>
+    </section>
+
+    <section>
+        <h3>Jest - Exemple</h3>
+        <div class="container">
+            <div class="col">
+                <ul>
+                    <li>
+                        <code class="language-js">describe()</code> permet de créer un block pour regrouper plusieurs
+                        tests.
+                    </li>
+                    <li>
+                        <code class="language-js">it()</code> permet de créer un test. (peut être remplacé par la
+                        fonction <code class="language-js">test()</code>).
+                    </li>
+                    <li>
+                        <code class="language-js">expect()</code> permet de tester une variable.
+                        Cette fonction peut être chaînée avec de nombreuses fonctions :
+                        <ul>
+                            <li><code class="language-js">toBe()</code></li>
+                            <li><code class="language-js">toBeUndefined()</code></li>
+                            <li><code class="language-js">toBeGreaterThan()</code></li>
+                            <li><code class="language-js">not.toBeNull()</code></li>
+                            <li><code class="language-js">resolves.ToBe()</code></li>
+                            <li><code class="language-js">rejects.ToBe()</code></li>
+                            <li>...</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="col">
+                <pre style="max-width: 30vw;"><code class="language-js">// converter.test.js
+import {currencyCodes, currencyConverter} from './converter';
+
+describe('Check the currency converter', () => {
+
+    it('should convert 1 euro in pound', () => {
+        const result = currencyConverter(1, currencyCodes.euro, currencyCodes.poundSterling);
+        expect(result).toBe(0.84);
+    });
+
+    it('should convert 2 euros in pound', () => {
+        const result = currencyConverter(2, currencyCodes.euro, currencyCodes.poundSterling);
+        expect(result).toBe(1.68);
+    });
+
+    it('should convert 2 dollars in pound', () => {
+        const result = currencyConverter(2, currencyCodes.usDollar, currencyCodes.poundSterling);
+        expect(result).toBe(1.44);
+    });
+
+});</code></pre>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h3>Jest - Exemple</h3>
+        <p>Maintenant, nous allons écrire le code de la fonction <code>currencyConverter</code> :</p>
+        <pre style="max-height: 60vh;"><code class="language-js">// converter.js
+export const currencyCodes = {
+    euro: 'euro',
+    usDollar: 'dollar',
+    poundSterling: 'pound'
+};
+
+function euroBaseConverter(to) {
+    switch (to) {
+        case currencyCodes.usDollar:
+            return 1.14;
+        case currencyCodes.poundSterling:
+            return 0.84;
+        default:
+            return 1;
+    }
+}
+
+export function currencyConverter(valueFrom, currencyFrom, currencyTo) {
+    const valueFromInEuro = valueFrom * (1 + (1 - euroBaseConverter(currencyFrom)));
+    const result = valueFromInEuro * euroBaseConverter(currencyTo);
+    return Math.round(result * 100) / 100; // 2 decimals places
+}</code></pre>
+    </section>
+
+    <section>
+        <h3>Jest - Exemple</h3>
+        <p>
+            Nous pouvons maintenant essayer d'exécuter nos tests :
+        </p>
+        <pre><code class="language-shell">npm run test</code></pre>
+        <pre><code>PASS  src/converter.test.js
+  Check the currency converter
+    ✓ should convert 1 euro in pound (2 ms)
+    ✓ should convert 2 euros in pound (1 ms)
+    ✓ should convert 2 dollars in pound (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       3 passed, 3 total
+Snapshots:   0 total
+Time:        0.437 s
+Ran all test suites.</code></pre>
+        <div class="instructions">
+            <ol>
+                <li>Écrire le test pour gérer le franc Suisse.</li>
+                <li>Implémenter le code correspondant dans le fichier <code>converter.js</code>.</li>
+            </ol>
+        </div>
+    </section>
+
+    <section>
+        <h3>Jest - Code asynchrone</h3>
+        <p>
+            Notre librairie fonctionne correctement, mais nous souhaiterions maintenant récupérer les <strong>taux de
+            change en temps réel</strong> pour éviter de devoir les mettre à jour manuellement.
+        </p>
+        <p>
+            Nous allons pour cela utiliser une API en modifiant le code de la fonction
+            <code class="language-js">currencyConverter()</code> :
+        </p>
+        <pre><code class="language-js">export const currencyCodes = {
+    euro: 'EUR',
+    usDollar: 'USD',
+    poundSterling: 'GBP'
+};
+
+export function currencyConverter(valueFrom, currencyFrom, currencyTo) {
+    return new Promise((resolve, reject) => {
+        fetch(`https://api.exchangeratesapi.io/v1/convert?access_key=API_KEY&amount=${valueFrom}&from=${currencyFrom}&to=${currencyTo}`)
+            .then(response => response.json())
+            .then(data => resolve(Math.round(data * 100) / 100))
+            .catch(err => reject(err));
+    });
+}</code></pre>
+        <footer>
+            <a href="#" class="warning">L'API nécessitant une clé API, le code ci-dessus ne va pas fonctionner en l'état !</a>
+        </footer>
+    </section>
+
+    <section>
+        <h3>Jest - Code asynchrone</h3>
+        <p>
+            Notre fonction fait maintenant appel à une API, mais malheureusement, cela va entraîner des
+            <strong>complications</strong> pour l'écriture et l'exécution de nos tests.
+        </p>
+        <p>
+            En effet, nos tests ne permettent pas de gérer l'exécution d'un code <strong>asynchrone</strong>.
+            De plus, le <strong>temps nécessaire</strong> pour récupérer les données de l'API peut être relativement long.
+        </p>
+        <p>
+            Nous allons donc résoudre ce problème en modifiant le code de notre fichier de test :
+        </p>
+        <pre><code class="language-js">it('should convert 1 euro in pound', (done) => {
+    currencyConverter(1, currencyCodes.euro, currencyCodes.poundSterling)
+        .then(result => {
+            expect(result).toBe(0.84);
+            done();
+        });
+});</code></pre>
+        <p>
+            Remarquez ici le paramètre <code class="language-js">done</code> qui est une fonction à appeler dans notre
+            code une fois le test terminé.
+        </p>
+    </section>
+
+    <section>
+        <h3>Jest - Code asynchrone</h3>
+        <p>
+            Dans le cas de l'utilisation d'une Promise, il est également possible d'utiliser la syntaxe suivante :
+        </p>
+        <pre><code class="language-js">it('should convert 1 euro in pound', () => {
+    expect(currencyConverter(1, currencyCodes.euro, currencyCodes.poundSterling)).resolves.toBe(0.84);
+});</code></pre>
+        <p>
+            Ou encore en utilisant <code class="language-js">async</code> / <code class="language-js">await</code> :
+        </p>
+        <pre><code class="language-js">it('should convert 1 euro in pound', async () => {
+    const result = await currencyConverter(1, currencyCodes.euro, currencyCodes.poundSterling);
+    expect(result).toBe(0.84);
+});</code></pre>
+    </section>
+
+    <section>
+        <h3>Jest - Mock</h3>
+        <p>
+            Nous pouvons maintenant de nouveau tester notre fonction <code class="language-js">currencyConverter()</code>.
+        </p>
+        <p>
+            Cependant, l'exécution des tests est maintenant <strong>ralentie</strong> par le temps nécessaire pour faire
+            l'appel à l'API.
+        </p>
+        <p>
+            De plus, les <strong>taux de change changeant quotidiennement</strong>, il sera nécessaire de mettre à jour
+            les valeurs attendues presque à chaque exécution des tests.
+        </p>
+        <p>
+            Pour résoudre ce problème, nous allons écrire un <strong>Mock</strong> de la fonction fetch afin de simuler
+            un appel API.
+        </p>
+        <p>
+            Nous allons également utiliser le helper <code class="language-js">beforeEach()</code> pour simuler le
+            comportement de l'API dans chaque test.
+        </p>
+    </section>
+
+    <section>
+        <h3>Jest - Mock</h3>
+        <pre><code class="language-js">beforeEach(() => {
+    global.fetch = jest.fn(() => {
+        const today = new Date();
+        return Promise.resolve({
+            success: true,
+            timestamp: today.getTime(),
+            base: "EUR",
+            date: today.toISOString().slice(0, 10),
+            rates: {
+                "AUD": 1.566015,
+                "CAD": 1.560132,
+                "CHF": 1.154727,
+                "CNY": 7.827874,
+                "GBP": 0.882047,
+                "JPY": 132.360679,
+                "USD": 1.23396
+            }
+        });
+    });
+});</code></pre>
+    </section>
+
+    <section>
+        <h3>Cypress</h3>
+        <p>
+            Cypress est un outil permettant de réaliser des tests End-to-End (E2E).
+        </p>
+        <p>
+            Les test E2E permettent de tester une application dans son intégralité.
+        </p>
+        <pre><code class="language-shell">npm install cypress --save-dev</code></pre>
+        <p>
+            Ensuite, nous pouvons immédiatement ouvrir Cypress pour explorer les tests pré-configurés :
+        </p>
+        <pre><code class="language-shell">npx cypress open</code></pre>
+    </section>
+
+
+    <section>
+        <h3>Cypress - Écrire un test</h3>
+        <p>
+            Lors de l'installation de Cypress, un dossier "integration" est créer. C'est dans celui-ci que nous allons
+            pouvoir ajouter nos tests.
+        </p>
+        <p>
+            Cypress est basé sur le framework de test <a href="https://mochajs.org/" target="_blank">Mocha</a> et la
+            librairie d'assertion <a href="https://www.chaijs.com/" target="_blank">Chai</a> mais la syntaxe est
+            similaire à celle utilisé dans Jest :
+        </p>
+        <pre><code class="language-js">// cypress/integration/converter_spec.js
+describe('Test features list', () => {
+    it('Display the converter form', () => {
+        cy.visit('http://localhost'); // Ouvrir l'URL http://localhost
+        cy.contains('Convertir'); // Vérifier si le code source contient le mot "Convertir"
+    }
+}</code></pre>
+    </section>
+
+    <section>
+        <h3>Cypress - Déclencher une action</h3>
+        <p>
+            Cypress permet de déclencher des actions sur une page web comme par exemple saisir des données dans un
+            formulaire et le valider :
+        </p>
+        <pre><code class="language-js">cy.get('#form-converter input[name="amount"]').type(1);
+cy.get('#form-converter select[name="from"]').select('EUR');
+cy.get('#form-converter select[name="to"]').select('USD');
+cy.get('#form-converter input[type="submit"]').click();</code></pre>
+    </section>
+
+    <section>
+        <h3>Cypress - Simuler un appel API</h3>
+        <p>
+            Cypress permet également de simuler un appel API :
+        </p>
+        <pre><code class="language-js">cy.intercept({
+    method: 'get',
+    url: 'https://api.exchangeratesapi.io/v1/convert'
+}).as('fetchRate');
+
+cy.wait(['@fetchRate']);</code></pre>
+        <p>
+            <code class="language-js">fetchRate</code> est un identifiant associé à la requête et est ensuite
+            utilisé pour indiquer à Cypress d'attendre la fin de la requête avant de continuer l'exécution du code.
+        </p>
+    </section>
+
+</section>

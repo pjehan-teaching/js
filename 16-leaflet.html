@@ -90,7 +90,7 @@ module.exports = {
         <h3>Mapbox</h3>
         <p>Pour afficher nos tiles, nous allons utiliser <a href="https://www.mapbox.com" target="_blank">Mapbox</a> :</p>
         <pre><code class="language-js">L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    attribution: 'Map data &amp;copy; &lt;a href="https://www.openstreetmap.org/"&gt;OpenStreetMap&lt;/a&gt; contributors, &lt;a href="https://creativecommons.org/licenses/by-sa/2.0/"&gt;CC-BY-SA&lt;/a&gt;, Imagery © &lt;a href="https://www.mapbox.com/"&gt;Mapbox&lt;/a&gt;',
     maxZoom: 18,
     id: 'mapbox/streets-v11',
     accessToken: 'your.mapbox.access.token' // <-- Mettre le token ici
@@ -116,7 +116,7 @@ L.Icon.Default.mergeOptions({
     <section>
         <h3>Ajouter un marker</h3>
         <p>Vous pouvez également afficher une popup lorsqu'un internaute clique sur un marker :</p>
-        <pre><code class="language-js">marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();</code></pre>
+        <pre><code class="language-js">marker.bindPopup("&lt;b&gt;Hello world!&lt;/b&gt;&lt;br&gt;I am a popup.").openPopup();</code></pre>
     </section>
 
     <section>
